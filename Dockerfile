@@ -10,7 +10,6 @@ COPY kubernetes.repo /etc/yum.repos.d/
 
 RUN dnf install -y ${REQUIRED_PKGS} ${OPTIONAL_PKGS} && \
     dnf clean all && \
-    pip3 install ${PIP_PKGS}
 
 # Optional - download and install oh-my-zsh
 ADD https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh /home/user/
@@ -19,6 +18,7 @@ RUN chown user:users /home/user/install.sh && \
 
 USER user
 
-RUN /home/user/install.sh >/dev/null 2>&1 && \
+RUN pip3 install --user ${PIP_PKGS} && \
+    /home/user/install.sh >/dev/null 2>&1 && \
     ln -s /usr/share/vim/vimfiles/ /home/user/.vim
 COPY .vimrc /home/user
