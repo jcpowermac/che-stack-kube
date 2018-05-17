@@ -2,7 +2,7 @@ FROM quay.io/jcallen/che-fedora-base
 
 EXPOSE 8080 8000 9191
 ENV REQUIRED_PKGS="bzip2 procps python3-pip dnf-plugins-core kubectl" \
-    OPTIONAL_PKGS="python-psycopg2 zsh vim vim-jedi vim-powerline vim-pysmell vim-syntastic vim-syntastic-python" \
+    OPTIONAL_PKGS="ansible pv python-psycopg2 zsh vim vim-jedi vim-powerline vim-pysmell vim-syntastic vim-syntastic-python" \
     PIP_PKGS="kube-shell"
 
 USER root
